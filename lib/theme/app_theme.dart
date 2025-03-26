@@ -11,12 +11,10 @@ class AppTheme {
           primary: AppColors.primary,
           secondary: AppColors.secondary,
           surface: AppColors.surface,
-          background: AppColors.background,
           error: AppColors.error,
           onPrimary: Colors.white,
           onSecondary: Colors.white,
           onSurface: AppColors.textPrimary,
-          onBackground: AppColors.textPrimary,
         ),
         textTheme: TextTheme(
           displayLarge: AppTypography.h1,
@@ -81,12 +79,10 @@ class AppTheme {
           primary: AppColors.primary,
           secondary: AppColors.secondary,
           surface: AppColors.darkSurface,
-          background: AppColors.darkBackground,
           error: AppColors.error,
           onPrimary: Colors.white,
           onSecondary: Colors.white,
           onSurface: AppColors.darkTextPrimary,
-          onBackground: AppColors.darkTextPrimary,
         ),
         textTheme: TextTheme(
           displayLarge:

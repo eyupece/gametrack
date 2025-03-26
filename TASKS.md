@@ -1,7 +1,7 @@
 # 📋 Proje Görev Listesi
 
 ## 🎯 Başlangıç Görevleri
-- [ ] Proje dizin yapısının oluşturulması
+- [x] Proje dizin yapısının oluşturulması
   - [x] Frontend dizin yapısı (lib/, assets/, test/ vb.)
   - [ ] Backend dizin yapısı (functions/, scripts/ vb.)
   - [ ] Shared kaynaklar için yapılandırma
@@ -124,7 +124,12 @@
   - [ ] Error states
 - [ ] Oyun Detay Sayfası (GameDetailPage) geliştirilmesi
 - [ ] Favoriler Sayfası (FavoritesPage) geliştirilmesi
-- [ ] Profil/Giriş Sayfası (ProfilePage) geliştirilmesi
+- [x] Profil/Giriş Sayfası (ProfilePage) geliştirilmesi
+  - [x] Profil görünümü
+  - [x] PRO rozeti
+  - [x] Fiyat alarmları listesi
+  - [x] Profil düzenleme
+  - [ ] Giriş/Kayıt ekranı
 - [ ] Ayarlar Sayfası (SettingsPage) geliştirilmesi
 - [ ] Arama Sayfası (SearchPage) geliştirilmesi
 - [ ] Premium/Pro Sayfası (PremiumPage) geliştirilmesi

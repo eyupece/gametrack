@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class ProfileScreen extends StatelessWidget {
+class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
 
+  @override
+  State<ProfileScreen> createState() => _ProfileScreenState();
+}
+
+class _ProfileScreenState extends State<ProfileScreen> {
   // Renk paleti sabitleri
   static const Color primaryBlue = Color(0xFF6662FC);
   static const Color accentRed = Color(0xFFFF2F56);
@@ -31,7 +36,7 @@ class ProfileScreen extends StatelessWidget {
         child: SafeArea(
           child: Column(
             children: [
-              _buildProfileHeader(),
+              _buildProfileHeader(context),
               _buildEditProfileButton(),
               _buildStats(),
               _buildPlatforms(),
@@ -45,7 +50,7 @@ class ProfileScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildProfileHeader() {
+  Widget _buildProfileHeader(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Row(
@@ -94,9 +99,99 @@ class ProfileScreen extends StatelessWidget {
               ],
             ),
           ),
-          IconButton(
-            icon: Icon(Icons.settings, color: white),
-            onPressed: () {},
+          PopupMenuButton<String>(
+            icon: Icon(Icons.more_vert, color: white),
+            color: white,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
+            itemBuilder: (context) => [
+              PopupMenuItem(
+                value: 'settings',
+                child: Row(
+                  children: [
+                    const Icon(Icons.settings, size: 20, color: textGrey),
+                    const SizedBox(width: 8),
+                    Text(
+                      'Ayarlar',
+                      style: GoogleFonts.nunito(color: textGrey),
+                    ),
+                  ],
+                ),
+              ),
+              PopupMenuItem(
+                value: 'logout',
+                child: Row(
+                  children: [
+                    const Icon(Icons.logout, size: 20, color: accentRed),
+                    const SizedBox(width: 8),
+                    Text(
+                      'Oturumu Kapat',
+                      style: GoogleFonts.nunito(color: accentRed),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+            onSelected: (value) {
+              if (value == 'logout') {
+                _showLogoutDialog(context);
+              } else if (value == 'settings') {
+                // TODO: Navigate to settings
+              }
+            },
+          ),
+        ],
+      ),
+    );
+  }
+
+  void _showLogoutDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        backgroundColor: white,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16),
+        ),
+        title: Text(
+          'Oturumu Kapat',
+          style: GoogleFonts.nunito(
+            fontWeight: FontWeight.bold,
+            color: darkBlue,
+          ),
+        ),
+        content: Text(
+          'Oturumu kapatmak istediğinizden emin misiniz?',
+          style: GoogleFonts.nunito(
+            color: textGrey,
+          ),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: Text(
+              'İptal',
+              style: GoogleFonts.nunito(
+                color: textGrey,
+              ),
+            ),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              // TODO: Implement logout logic
+              Navigator.of(context).popUntil((route) => route.isFirst);
+            },
+            style: ElevatedButton.styleFrom(
+              backgroundColor: accentRed,
+              foregroundColor: white,
+            ),
+            child: Text(
+              'Oturumu Kapat',
+              style: GoogleFonts.nunito(
+                fontWeight: FontWeight.bold,
+              ),
+            ),
           ),
         ],
       ),
