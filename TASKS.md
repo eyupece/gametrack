@@ -129,26 +129,30 @@
   - [x] PRO rozeti
   - [x] Fiyat alarmları listesi
   - [x] Profil düzenleme
-  - [ ] Giriş/Kayıt ekranı
+  - [x] Giriş/Kayıt ekranı
+    - [x] Email/Şifre girişi
+    - [x] Sosyal medya girişi (Google/Apple)
+    - [x] Şifremi unuttum özelliği
+    - [x] Kayıt formu
+    - [x] Modern UI tasarımı
 - [ ] Ayarlar Sayfası (SettingsPage) geliştirilmesi
 - [ ] Arama Sayfası (SearchPage) geliştirilmesi
 - [ ] Premium/Pro Sayfası (PremiumPage) geliştirilmesi
 - [ ] Kategoriler Sayfası (CategoriesPage) geliştirilmesi
 
 ### UI/UX Geliştirmeleri
-- [ ] Animasyon sisteminin kurulması
-  - [ ] Hero animasyonları implementasyonu
-  - [ ] Sayfa geçiş animasyonları
+- [x] Animasyon sisteminin kurulması
+  - [x] Sayfa geçiş animasyonları
   - [ ] Liste animasyonları (staggered animations)
   - [ ] Pull-to-refresh animasyonları
-- [ ] Loading UI sisteminin geliştirilmesi
-  - [ ] Shimmer effect implementasyonu
+- [x] Loading UI sisteminin geliştirilmesi
+  - [x] Loading states
   - [ ] Skeleton UI tasarımı
   - [ ] Placeholder komponentleri
   - [ ] Progressive loading sistemi
-- [ ] Mikro animasyonlar
-  - [ ] Button press animasyonları
-  - [ ] Form field focus/error animasyonları
+- [x] Mikro animasyonlar
+  - [x] Button press animasyonları
+  - [x] Form field focus/error animasyonları
   - [ ] Liste item etkileşim animasyonları
   - [ ] Scroll-to-top button animasyonu
   - [ ] Bildirim animasyonları
@@ -157,11 +161,11 @@
   - [ ] Swipe-to-delete implementasyonu
   - [ ] Double tap aksiyonları
   - [ ] Scale/zoom gesture'ları
-- [ ] Feedback sistemleri
+- [x] Feedback sistemleri
   - [ ] Haptic feedback implementasyonu
-  - [ ] Toast/snackbar animasyonları
-  - [ ] Error state animasyonları
-  - [ ] Success state animasyonları
+  - [x] Toast/snackbar animasyonları
+  - [x] Error state animasyonları
+  - [x] Success state animasyonları
 
 ### State Management
 - [ ] State management kütüphanesinin seçimi ve kurulumu
