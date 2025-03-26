@@ -1,10 +1,57 @@
 ---
-description:
-globs:
+description: 
+globs: 
 alwaysApply: true
 ---
+# Cursor Proje Kurallari
 
-# Your rule content
+## Genel Kurallar
 
-- You can @ files here
-- You can use markdown but dont have to
+- Turkce karakter kullanimi konusunda dikkatli olunmali
+- README.md dosyasi guncel tutulmali
+- Hassas bilgiler (API anahtarlari, sifreler) asla kod icinde tutulmamali
+- Kod tekrarindan kacinilmali (DRY prensibi)
+- Hata mesajlari kullanici dostu olmali
+
+## Git & Versiyon Kontrolu
+
+- Her commit mesaji aciklayici, anlasilir ve Ingilizce olmali
+- Atomic commit kurallarina uyulmali
+- CONTRIBUTING.md dosyasindaki commit mesaj kurallarina uyulmali
+- Yeni ozellikler icin `feature/kullaniciadi` onekli branch'ler kullanilmali
+- Main branch'e direkt push yapilmamali
+
+## Kod Yazim Kurallari
+
+- Degisken ve fonksiyon isimleri aciklayici olmali
+- Turkce karakter kullanilmamali
+- Kod tekrarindan kacinilmali
+- Fonksiyonlar tek bir is yapmali
+- Kod temiz ve duzenli olmali
+- Her fonksiyon 20 satirdan uzun olmamali
+- Ic ice 3'ten fazla dongu/kosul kullanilmamali
+
+## Gorev Takibi
+
+- [TASKS.md](mdc:.github/TASKS.md) dosyasi surekli takip edilmeli
+- [TASKS.md](mdc:.github/TASKS.md) dosyasi her committen once guncellenmeli
+- [TASKS.md](mdc:.github/TASKS.md) dosyasi guncel tutulmali
+
+## Guvenlik
+
+- Hassas bilgiler environment variable olarak saklanmali
+- API anahtarlari ve sifreler asla kod icinde tutulmamali
+- Kullanici girisleri validate edilmeli
+- Guvenlik guncellemeleri takip edilmeli
+
+## Derleme & Deploy
+
+- Derleme hatalari giderilmeden merge yapilmamali
+
+## Dokumantasyon
+
+- [README.md](mdc:README.md) dosyasi guncel ve anlasilir olmali
+- Kod icinde gerekli yerlerde aciklama satiri kullanilmali
+- API endpoint'leri dokumante edilmeli
+- Kurulum adimlari acik ve net olmali 
+- Dokümantasyon Türkçe yazılmalı
