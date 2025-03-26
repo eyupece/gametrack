@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'screens/profile_screen.dart';
+import 'screens/auth_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -9,34 +9,80 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'GameTrack',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a purple toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF6662FC)),
         useMaterial3: true,
         textTheme: GoogleFonts.nunitoTextTheme(
           Theme.of(context).textTheme,
         ),
       ),
-      home: const ProfileScreen(),
+      home: const HomeScreen(),
     );
+  }
+}
+
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  int _selectedIndex = 0;
+  bool _isLoggedIn = false;
+
+  static const Color primaryBlue = Color(0xFF6662FC);
+  static const Color textGrey = Color(0xFF5A585B);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: Text(
+          'Ana Sayfa içeriği gelecek',
+          style: GoogleFonts.nunito(
+            fontSize: 20,
+            color: textGrey,
+          ),
+        ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _selectedIndex,
+        selectedItemColor: primaryBlue,
+        unselectedItemColor: textGrey.withOpacity(0.5),
+        type: BottomNavigationBarType.fixed,
+        onTap: _onItemTapped,
+        items: const [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Ana Sayfa'),
+          BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Keşfet'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.add_circle_outline), label: 'Ekle'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.notifications), label: 'Bildirimler'),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profil'),
+        ],
+      ),
+    );
+  }
+
+  void _onItemTapped(int index) {
+    if (index == 4 && !_isLoggedIn) {
+      // Profil sekmesine tıklandı ve giriş yapılmamış
+      showModalBottomSheet(
+        context: context,
+        isScrollControlled: true,
+        backgroundColor: Colors.transparent,
+        builder: (context) => const AuthScreen(),
+      );
+    } else {
+      setState(() {
+        _selectedIndex = index;
+      });
+    }
   }
 }
