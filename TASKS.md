@@ -106,11 +106,11 @@
   - [x] Network paketi (Dio)
   - [x] Cache paketi (Hive)
   - [x] UI komponent paketleri (flutter_svg, cached_network_image, vb.)
-- [ ] Tema ve stil dosyalarının hazırlanması
-  - [ ] Renk paleti
-  - [ ] Typography
-  - [ ] Component stilleri
-  - [ ] Dark/Light tema desteği
+- [x] Tema ve stil dosyalarının hazırlanması
+  - [x] Renk paleti
+  - [x] Typography
+  - [x] Component stilleri
+  - [x] Dark/Light tema desteği
 
 ### Ekranların Geliştirilmesi
 - [ ] Ana Sayfa (HomePage) geliştirilmesi
