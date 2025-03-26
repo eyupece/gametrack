@@ -17,10 +17,10 @@
   - [x] Kurulum adımları
   - [x] Geliştirme ortamı gereksinimleri
   - [x] Katkıda bulunma rehberi
-- [ ] Geliştirme ortamının hazırlanması
-  - [ ] IDE kurulumu ve yapılandırması
-  - [ ] Gerekli SDK'ların kurulumu
-  - [ ] Geliştirici araçlarının kurulumu
+- [x] Geliştirme ortamının hazırlanması
+  - [x] IDE kurulumu ve yapılandırması
+  - [x] Gerekli SDK'ların kurulumu
+  - [x] Geliştirici araçlarının kurulumu
 
 ## 🔧 Backend Görevleri
 ### Firebase Kurulumu
@@ -93,19 +93,19 @@
 
 ## 🎨 Frontend Görevleri
 ### Flutter Kurulumu
-- [ ] Flutter SDK kurulumu
-  - [ ] Stable channel kurulumu
-  - [ ] Platform-specific araçların kurulumu
-  - [ ] IDE eklentilerinin kurulumu
-- [ ] Proje yapılandırması
-  - [ ] pubspec.yaml düzenlenmesi
-  - [ ] Asset yapılandırması
-  - [ ] Platform-specific ayarlar
-- [ ] Gerekli paketlerin eklenmesi
-  - [ ] State management paketi
-  - [ ] Network paketi
-  - [ ] Cache paketi
-  - [ ] UI komponent paketleri
+- [x] Flutter SDK kurulumu
+  - [x] Stable channel kurulumu
+  - [x] Platform-specific araçların kurulumu
+  - [x] IDE eklentilerinin kurulumu
+- [x] Proje yapılandırması
+  - [x] pubspec.yaml düzenlenmesi
+  - [x] Asset yapılandırması
+  - [x] Platform-specific ayarlar
+- [x] Gerekli paketlerin eklenmesi
+  - [x] State management paketi (Riverpod)
+  - [x] Network paketi (Dio)
+  - [x] Cache paketi (Hive)
+  - [x] UI komponent paketleri (flutter_svg, cached_network_image, vb.)
 - [ ] Tema ve stil dosyalarının hazırlanması
   - [ ] Renk paleti
   - [ ] Typography
