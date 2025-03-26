@@ -2,22 +2,21 @@
 
 ## 🎯 Başlangıç Görevleri
 - [ ] Proje dizin yapısının oluşturulması
-  - [ ] Frontend dizin yapısı (lib/, assets/, test/ vb.)
+  - [x] Frontend dizin yapısı (lib/, assets/, test/ vb.)
   - [ ] Backend dizin yapısı (functions/, scripts/ vb.)
   - [ ] Shared kaynaklar için yapılandırma
-- [ ] Git repository kurulumu
-  - [ ] Branch stratejisinin belirlenmesi (main, develop, feature/ vb.)
-  - [ ] Git hooks kurulumu
-  - [ ] Commit message template oluşturulması
-- [ ] .gitignore dosyasının hazırlanması
-  - [ ] Flutter için gerekli ignore kuralları
-  - [ ] Firebase için gerekli ignore kuralları
-  - [ ] IDE dosyaları için ignore kuralları
-- [ ] README.md dosyasının güncellenmesi
-  - [ ] Proje açıklaması
-  - [ ] Kurulum adımları
-  - [ ] Geliştirme ortamı gereksinimleri
-  - [ ] Katkıda bulunma rehberi
+- [x] Git repository kurulumu
+  - [x] Branch stratejisinin belirlenmesi (main, develop, feature/ vb.)
+  - [x] Commit message template oluşturulması
+- [x] .gitignore dosyasının hazırlanması
+  - [x] Flutter için gerekli ignore kuralları
+  - [x] Firebase için gerekli ignore kuralları
+  - [x] IDE dosyaları için ignore kuralları
+- [x] README.md dosyasının güncellenmesi
+  - [x] Proje açıklaması
+  - [x] Kurulum adımları
+  - [x] Geliştirme ortamı gereksinimleri
+  - [x] Katkıda bulunma rehberi
 - [ ] Geliştirme ortamının hazırlanması
   - [ ] IDE kurulumu ve yapılandırması
   - [ ] Gerekli SDK'ların kurulumu
@@ -177,24 +176,6 @@
   - [ ] Localization setup
   - [ ] String dosyalarının hazırlanması
   - [ ] Dil değiştirme mekanizması
-
-## 🔍 Test Süreçleri
-- [ ] Unit testlerin yazılması
-  - [ ] Service testleri
-  - [ ] Model testleri
-  - [ ] Utility testleri
-- [ ] Integration testlerin yazılması
-  - [ ] API integration testleri
-  - [ ] State management testleri
-  - [ ] Navigation testleri
-- [ ] UI testlerinin yazılması
-  - [ ] Widget testleri
-  - [ ] Screen testleri
-  - [ ] E2E testleri
-- [ ] Performance testlerinin yapılması
-  - [ ] Load testing
-  - [ ] Memory leak testing
-  - [ ] Frame drop analizi
 
 ## 📱 Deployment
 - [ ] Firebase Hosting konfigürasyonu
