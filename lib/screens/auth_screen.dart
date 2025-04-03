@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'profile_screen.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import '../services/auth_service.dart';
 
 class AuthScreen extends StatefulWidget {
   const AuthScreen({super.key});
@@ -17,6 +18,7 @@ class _AuthScreenState extends State<AuthScreen> {
   final _passwordController = TextEditingController();
   final _nameController = TextEditingController();
   bool _isLoading = false;
+  final _authService = AuthService();
 
   static const Color primaryBlue = Color(0xFF6662FC);
   static const Color accentRed = Color(0xFFFF2F56);
@@ -174,15 +176,7 @@ class _AuthScreenState extends State<AuthScreen> {
 
   Widget _buildAuthButton() {
     return ElevatedButton(
-      onPressed: () {
-        if (_formKey.currentState!.validate()) {
-          // TODO: Implement auth logic
-          Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(builder: (context) => const ProfileScreen()),
-          );
-        }
-      },
+      onPressed: _isLoading ? null : _handleSubmit,
       style: ElevatedButton.styleFrom(
         backgroundColor: accentRed,
         foregroundColor: white,
@@ -191,13 +185,22 @@ class _AuthScreenState extends State<AuthScreen> {
           borderRadius: BorderRadius.circular(12),
         ),
       ),
-      child: Text(
-        isLogin ? 'Giriş Yap' : 'Kayıt Ol',
-        style: GoogleFonts.nunito(
-          fontSize: 16,
-          fontWeight: FontWeight.bold,
-        ),
-      ),
+      child: _isLoading
+          ? const SizedBox(
+              height: 20,
+              width: 20,
+              child: CircularProgressIndicator(
+                strokeWidth: 2,
+                valueColor: AlwaysStoppedAnimation<Color>(white),
+              ),
+            )
+          : Text(
+              isLogin ? 'Giriş Yap' : 'Kayıt Ol',
+              style: GoogleFonts.nunito(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
     );
   }
 
@@ -287,9 +290,7 @@ class _AuthScreenState extends State<AuthScreen> {
         _buildSocialButton(
           'Google ile Devam Et',
           FontAwesomeIcons.google,
-          onPressed: () {
-            // TODO: Implement Google sign in
-          },
+          onPressed: _handleGoogleSignIn,
           backgroundColor: Colors.white,
           foregroundColor: Colors.black87,
         ),
@@ -297,9 +298,7 @@ class _AuthScreenState extends State<AuthScreen> {
         _buildSocialButton(
           'Apple ile Devam Et',
           FontAwesomeIcons.apple,
-          onPressed: () {
-            // TODO: Implement Apple sign in
-          },
+          onPressed: _handleAppleSignIn,
           backgroundColor: Colors.black,
           foregroundColor: Colors.white,
         ),
@@ -317,7 +316,7 @@ class _AuthScreenState extends State<AuthScreen> {
     return SizedBox(
       width: double.infinity,
       child: ElevatedButton(
-        onPressed: onPressed,
+        onPressed: _isLoading ? null : onPressed,
         style: ElevatedButton.styleFrom(
           backgroundColor: backgroundColor,
           foregroundColor: foregroundColor,
@@ -326,20 +325,28 @@ class _AuthScreenState extends State<AuthScreen> {
             borderRadius: BorderRadius.circular(12),
           ),
         ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            FaIcon(icon, size: 20),
-            const SizedBox(width: 12),
-            Text(
-              text,
-              style: GoogleFonts.nunito(
-                fontSize: 16,
-                fontWeight: FontWeight.w600,
+        child: _isLoading
+            ? const SizedBox(
+                height: 20,
+                width: 20,
+                child: CircularProgressIndicator(
+                  strokeWidth: 2,
+                ),
+              )
+            : Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  FaIcon(icon, size: 20),
+                  const SizedBox(width: 12),
+                  Text(
+                    text,
+                    style: GoogleFonts.nunito(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ],
               ),
-            ),
-          ],
-        ),
       ),
     );
   }
@@ -413,19 +420,7 @@ class _AuthScreenState extends State<AuthScreen> {
             ),
           ),
           ElevatedButton(
-            onPressed: () {
-              // TODO: Implement password reset
-              Navigator.pop(context);
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: Text(
-                    'Şifre sıfırlama bağlantısı gönderildi',
-                    style: GoogleFonts.nunito(),
-                  ),
-                  backgroundColor: primaryBlue,
-                ),
-              );
-            },
+            onPressed: () => _handlePasswordReset(resetEmailController.text),
             style: ElevatedButton.styleFrom(
               backgroundColor: primaryBlue,
               shape: RoundedRectangleBorder(
@@ -444,6 +439,139 @@ class _AuthScreenState extends State<AuthScreen> {
         ],
       ),
     );
+  }
+
+  Future<void> _handleSubmit() async {
+    if (!_formKey.currentState!.validate()) return;
+
+    setState(() => _isLoading = true);
+
+    try {
+      if (isLogin) {
+        await _authService.signInWithEmailAndPassword(
+          _emailController.text,
+          _passwordController.text,
+        );
+      } else {
+        await _authService.registerWithEmailAndPassword(
+          _emailController.text,
+          _passwordController.text,
+        );
+      }
+      
+      if (mounted) {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => const ProfileScreen()),
+        );
+      }
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(
+              e.toString(),
+              style: GoogleFonts.nunito(),
+            ),
+            backgroundColor: accentRed,
+          ),
+        );
+      }
+    } finally {
+      if (mounted) {
+        setState(() => _isLoading = false);
+      }
+    }
+  }
+
+  Future<void> _handleGoogleSignIn() async {
+    setState(() => _isLoading = true);
+
+    try {
+      await _authService.signInWithGoogle();
+      if (mounted) {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => const ProfileScreen()),
+        );
+      }
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(
+              e.toString(),
+              style: GoogleFonts.nunito(),
+            ),
+            backgroundColor: accentRed,
+          ),
+        );
+      }
+    } finally {
+      if (mounted) {
+        setState(() => _isLoading = false);
+      }
+    }
+  }
+
+  Future<void> _handleAppleSignIn() async {
+    setState(() => _isLoading = true);
+
+    try {
+      await _authService.signInWithApple();
+      if (mounted) {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => const ProfileScreen()),
+        );
+      }
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(
+              e.toString(),
+              style: GoogleFonts.nunito(),
+            ),
+            backgroundColor: accentRed,
+          ),
+        );
+      }
+    } finally {
+      if (mounted) {
+        setState(() => _isLoading = false);
+      }
+    }
+  }
+
+  Future<void> _handlePasswordReset(String email) async {
+    try {
+      await _authService.sendPasswordResetEmail(email);
+      if (mounted) {
+        Navigator.pop(context);
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(
+              'Şifre sıfırlama bağlantısı gönderildi',
+              style: GoogleFonts.nunito(),
+            ),
+            backgroundColor: primaryBlue,
+          ),
+        );
+      }
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(
+              e.toString(),
+              style: GoogleFonts.nunito(),
+            ),
+            backgroundColor: accentRed,
+          ),
+        );
+      }
+    }
   }
 
   static const Color textGrey = Color(0xFF5A585B);

@@ -24,23 +24,23 @@
 
 ## 🔧 Backend Görevleri
 ### Firebase Kurulumu
-- [ ] Firebase projesinin oluşturulması
-  - [ ] Proje ayarlarının yapılandırılması
-  - [ ] Bölge ve dil ayarlarının yapılması
-  - [ ] Fiyatlandırma planının seçimi
-- [ ] Firebase CLI kurulumu
-  - [ ] Global kurulum
-  - [ ] Proje bağlantısı
-  - [ ] Deployment ayarları
-- [ ] Firebase konfigürasyon dosyalarının hazırlanması
-  - [ ] Development ortamı için config
-  - [ ] Production ortamı için config
-  - [ ] Test ortamı için config
-- [ ] Firebase Authentication kurulumu
-  - [ ] Email/Password auth
-  - [ ] Google Sign-in
-  - [ ] Apple Sign-in (iOS için)
-  - [ ] Auth kurallarının belirlenmesi
+- [x] Firebase projesinin oluşturulması
+  - [x] Proje ayarlarının yapılandırılması
+  - [x] Bölge ve dil ayarlarının yapılması
+  - [x] Fiyatlandırma planının seçimi
+- [x] Firebase CLI kurulumu
+  - [x] Global kurulum
+  - [x] Proje bağlantısı
+  - [x] Deployment ayarları
+- [x] Firebase konfigürasyon dosyalarının hazırlanması
+  - [x] Development ortamı için config
+  - [x] Production ortamı için config
+  - [x] Test ortamı için config
+- [x] Firebase Authentication kurulumu
+  - [x] Email/Password auth
+  - [x] Google Sign-in
+  - [x] Apple Sign-in (iOS için)
+  - [x] Auth kurallarının belirlenmesi
 - [ ] Firestore veritabanı kurulumu
   - [ ] Koleksiyon yapısının tasarlanması
   - [ ] İndeks planlaması
@@ -168,10 +168,10 @@
   - [x] Success state animasyonları
 
 ### State Management
-- [ ] State management kütüphanesinin seçimi ve kurulumu
-  - [ ] Provider/Riverpod/Bloc değerlendirmesi
-  - [ ] Seçilen çözümün kurulumu
-  - [ ] Örnek implementasyon
+- [x] State management kütüphanesinin seçimi ve kurulumu
+  - [x] Provider/Riverpod/Bloc değerlendirmesi
+  - [x] Seçilen çözümün kurulumu
+  - [x] Örnek implementasyon
 - [ ] Global state yapısının kurulması
   - [ ] Auth state
   - [ ] User preferences
